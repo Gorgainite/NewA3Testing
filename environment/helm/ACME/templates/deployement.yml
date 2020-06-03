@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: "acme"
+spec:
+    selector:
+        matchLabels:
+         app: "acme"
+    replicas: 5
+    template:
+        metadata:
+            labels:
+             app: "acme"
+        spec:
+         containers:
+         - image: acme
+           imagePullPolicy: Always
+           name: "acme"
+           ports:
+           - containerPort: 80
