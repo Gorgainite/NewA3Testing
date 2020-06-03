@@ -2,7 +2,7 @@ provider "aws" {
   version = "~> 2.23"
   region  = "us-east-1"
 }
-
+// Geting started
 
 resource "random_string" "tfstatename" {
   length = 6
