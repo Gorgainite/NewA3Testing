@@ -13,7 +13,7 @@ spec:
              app: "acme"
         spec:
          containers:
-         - image: acme
+         - image: acme:latest
            imagePullPolicy: Always
            name: "acme"
            ports:
