@@ -159,6 +159,24 @@ jobs:
           paths:
             - artifacts
 
+  deploy-test:
+     docker:
+      - image: cimg/base:2020.01
+    enviroment:
+      ENV: test
+    steps:
+      - attach_workspace:
+        at: ./
+      - setup-cd
+      - run:
+          name: deploy infra
+          command: |
+            cd artifacts/infra
+            make init
+            make up
+
+
+
 
 
 workflows:
@@ -166,6 +184,9 @@ workflows:
   build-test-package:
     jobs:
       - build
+      - deploy-test
+          requires:
+            - build
       - integration:
           requires: 
             - build
