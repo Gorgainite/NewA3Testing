@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: "techtestapp"
+spec:
+    selector:
+        matchLabels:
+         app: "techtestapp"
+    replicas: 5
+    template:
+        metadata:
+            labels:
+             app: "techtestapp"
+        spec:
+            containers:
+            - image: src/docker-techtestapp
+              imagePullPolicy: Always
+              name: "techtestapp"
+              ports:
+              - containerPort: 80
