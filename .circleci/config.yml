@@ -162,7 +162,7 @@ jobs:
   deploy-test:
     docker:
         - image: cimg/base:2020.01
-    enviroment:
+    environment:
       ENV: test
     steps:
       - attach_workspace:
