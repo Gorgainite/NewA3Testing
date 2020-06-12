@@ -166,7 +166,6 @@ jobs:
       ENV: test
     steps:
       - attach_workspace:
-        at: ./
       - setup-cd
       - run:
           name: deploy infra
