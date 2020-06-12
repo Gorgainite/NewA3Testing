@@ -160,8 +160,8 @@ jobs:
             - artifacts
 
   deploy-test:
-     docker:
-      - image: cimg/base:2020.01
+    docker:
+        - image: cimg/base:2020.01
     enviroment:
       ENV: test
     steps:
