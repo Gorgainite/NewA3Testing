@@ -92,8 +92,6 @@ jobs:
           name: upgrade DATABASE
           command: |
           kubectl exec deployement/tech-test-app -n prod -- ./techtestapp updatedb -s 
-
-
   integration:
     docker:
       - image: circleci/node:lts
