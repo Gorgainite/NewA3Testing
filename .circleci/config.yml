@@ -186,8 +186,6 @@ workflows:
     jobs:
       - build
       - deploy-test
-          requires:
-            - build
       - integration:
           requires: 
             - build
