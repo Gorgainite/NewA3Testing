@@ -59,7 +59,7 @@ jobs:
             cd artifacts/infra
             make init
             make up
-            terraform output endpoint > .../dbendpoint.txt
+            terraform output endpoint > ../dbendpoint.txt
       - run:
           name: deploy app
           command: |
@@ -84,7 +84,7 @@ jobs:
             cd artifacts/infra
             make init
             make up
-            terraform output endpoint > .../dbendpoint.txt
+            terraform output endpoint > ../dbendpoint.txt
       - run:
           name: deploy app
           command: |
@@ -196,8 +196,7 @@ jobs:
       - run:
           name: Package helm
           command: | 
-
-            #helm package helm/acme --app-version ${CIRCLE_SHA1} -d artifacts
+            helm package artifacts/techtestapp --app-version ${CIRCLE_SHA1} -d artifacts
       - run:
           name: Package infra
           command: |
