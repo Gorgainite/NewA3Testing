@@ -21,7 +21,7 @@ commands:
           curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
           chmod +x kops-linux-amd64
           sudo mv kops-linux-amd64 /usr/local/bin/kops
-          kops export kubecfg rmit.k8s.local --state s3://rmit-kops-state-imtrtm
+          kops export kubecfg rmit.k8s.local --state s3://rmit-kops-state-l2ceda
 #TESTING DEPLOY
 
 jobs:
@@ -51,6 +51,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ./
+          
       - setup-cd
       - run:
           name: infra
@@ -217,13 +218,7 @@ workflows:
   version: 2
   build-test-package:
     jobs:
-      - build
-      - deploy-test:
-          requires:
-            - build
-      - deploy-prod:
-          requires:
-            - deploy-test            
+      - build           
       - integration:
           requires: 
             - build
@@ -234,6 +229,13 @@ workflows:
           requires:
             - e2e
             - integration
+      - deploy-test:
+          requires:
+            - build
+            - package
+      - deploy-prod:
+              requires:
+          - deploy-test 
           filters:
             branches:
               only: master
