@@ -62,7 +62,7 @@ resource "aws_db_subnet_group" "default" {
 }
 
 resource "aws_rds_cluster" "default" {
-  cluster_identifier      = "${var.name}-${var.environment}"
+  cluster_identifier      = "${var.name}${var.environment}"
   vpc_security_group_ids  = ["${aws_security_group.default.id}"]
   db_subnet_group_name    = aws_db_subnet_group.default.name
   database_name           = "servian"
