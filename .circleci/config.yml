@@ -53,9 +53,13 @@ jobs:
           at: ./
       - setup-cd
       - run:
+          name: endpoint
+          command: |
+            terraform output endpoint > .../dbendpoint.txt
+      - run:
           name: deploy app
           command: |
-            helm upgrade techtestapp artifacts/techtestapp-0.1.0.tgz -i -n test --wait --set image=$(cat artifacts/images.txt)
+            helm upgrade techtestapp helm/techtestapp-0.1.0.tgz -i -n test --wait --set image=$(cat artifacts/images.txt)
             
   integration:
     docker:
