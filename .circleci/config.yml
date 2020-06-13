@@ -67,6 +67,33 @@ jobs:
           name: upgrade DATABASE
           command: |
             kubectl exec deployement/tech-test-app -n test -- ./techtestapp updatedb -s  
+
+  deploy-test:
+    docker:
+      - image: cimg/base:2020.01
+    environment:
+      ENV: prod
+    steps:
+      - attach_workspace:
+          at: ./
+      - setup-cd
+      - run:
+          name: infra
+          command: |
+            cd artifacts/infra
+            make init
+            make up
+            terraform output endpoint > .../dbendpoint.txt
+      - run:
+          name: deploy app
+          command: |
+            helm upgrade techtestapp helm/techtestapp-0.1.0.tgz -i -n prod --wait --set image=$(cat artifacts/images.txt), dbhost=$(cat artifacts/dbendpoint.txt)
+      - run:
+          name: upgrade DATABASE
+          command: |
+          kubectl exec deployement/tech-test-app -n prod -- ./techtestapp updatedb -s 
+
+
   integration:
     docker:
       - image: circleci/node:lts
@@ -196,6 +223,9 @@ workflows:
       - deploy-test:
           requires:
             - build
+      - deploy-prod:
+          requires:
+            - deploy-test            
       - integration:
           requires: 
             - build
