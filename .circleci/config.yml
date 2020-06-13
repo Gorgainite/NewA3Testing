@@ -68,7 +68,7 @@ jobs:
           command: |
             kubectl exec deployement/tech-test-app -n test -- ./techtestapp updatedb -s  
 
-  deploy-test:
+  deploy-prod:
     docker:
       - image: cimg/base:2020.01
     environment:
