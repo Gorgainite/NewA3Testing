@@ -53,12 +53,10 @@ jobs:
           at: ./
       - setup-cd
       - run:
-          name: deploy infra
+          name: deploy app
           command: |
-            cd artifacts/infra
-            make init 
-            make up
-
+            helm upgrade techtestapp artifacts/techtestapp-0.1.0.tgz -i -n test --wait --set image=${cat artifacts/images.txt}
+            
   integration:
     docker:
       - image: circleci/node:lts
