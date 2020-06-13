@@ -53,8 +53,6 @@ jobs:
           at: ./
       - setup-cd
       - run:
-
-      - run:
           name: infra
           command: |
             cd artifacts/infra
