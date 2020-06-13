@@ -234,7 +234,7 @@ workflows:
             - build
             - package
       - deploy-prod:
-              requires:
+          requires:
             - deploy-test 
           filters:
             branches:
