@@ -61,7 +61,7 @@ jobs:
             make up
             terraform output endpoint > ../dbendpoint.txt
       - run:
-          name: deploy app
+          name: deploy techtestapp
           command: |
             helm upgrade techtestapp artifacts/techtestapp-0.1.0.tgz -i -n test --wait --set dbhost=$(cat artifacts/dbendpoint.txt),image=$(cat artifacts/image.txt)
       - run:
