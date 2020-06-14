@@ -165,7 +165,7 @@ jobs:
     machine: true
     environment:
       ECR: 929638069699.dkr.ecr.us-east-1.amazonaws.com
-      reponame: techtestapp
+      reponame: app
       NODE_ENV: production
     steps:
       - checkout
