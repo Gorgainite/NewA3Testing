@@ -63,7 +63,7 @@ jobs:
       - run:
           name: deploy app
           command: |
-            helm upgrade techtestapp artifacts/techtestapp.tgz -i -n test --wait --set dbhost=$(cat artifacts/dbendpoint.txt),image=$(cat artifacts/image.txt)
+            helm upgrade techtestapp artifacts/techtestapp-0.1.0.tgz -i -n test --wait --set dbhost=$(cat artifacts/dbendpoint.txt),image=$(cat artifacts/image.txt)
       - run:
           name: upgrade DATABASE
           command: |
@@ -88,7 +88,7 @@ jobs:
       - run:
           name: deploy app
           command: |
-            helm upgrade techtestapp artifacts/techtestapp.tgz -i -n test --wait --set dbhost=$(cat artifacts/dbendpoint.txt),image=$(cat artifacts/image.txt)
+            helm upgrade techtestapp artifacts/techtestapp-0.1.0.tgz -i -n test --wait --set dbhost=$(cat artifacts/dbendpoint.txt),image=$(cat artifacts/image.txt)
       - run:
           name: upgrade DATABASE
           command: |
