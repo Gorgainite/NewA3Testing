@@ -54,7 +54,7 @@ jobs:
           
       - setup-cd
       - run:
-          name: infra
+          name: deploy infra
           command: |
             cd artifacts/infra
             make init
