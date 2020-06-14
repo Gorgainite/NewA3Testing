@@ -5,4 +5,4 @@ subnet_ids = [
 username = "testuser"
 password = "TestPass"
 vpc_id = "vpc-0a760574768b503b5"
-name = "app"
+name = "test"

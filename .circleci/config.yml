@@ -222,12 +222,12 @@ workflows:
       - integration:
           requires: 
             - build
-      - e2e:
-          requires:
-            - build
+      #- e2e:
+      #    requires:
+      #      - build
       - package:
           requires:
-            - e2e
+      #      - e2e
             - integration
       - deploy-test:
           requires:
