@@ -197,7 +197,7 @@ jobs:
           name: Package helm
           command: | 
 
-            #helm package helm/acme --app-version ${CIRCLE_SHA1} -d artifacts
+            helm package helm/acme --app-version ${CIRCLE_SHA1} -d artifacts
       - run:
           name: Package infra
           command: |
