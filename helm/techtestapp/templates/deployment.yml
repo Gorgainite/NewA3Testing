@@ -4,17 +4,17 @@ metadata:
     name: "techtestapp"
 spec:
     selector:
-        matchLabels:
-         app: "techtestapp"
-    replicas: 5
-    template:
-        metadata:
-            labels:
-             app: "techtestapp"
-        spec:
-            containers:
-            - image: src/docker-techtestapp
-              imagePullPolicy: Always
-              name: "techtestapp"
-              ports:
-              - containerPort: 80
+        matchlabels:
+            app: "techtestapp"
+        replicas: 5
+        template:
+            metadata:
+                labels:
+                    app: "techtestapp"
+            spec:
+                containers:
+                - image: infra/src
+                  imagePullPolicy: Always
+                  name: "techtestapp"
+                  ports:
+                  - containerPort: 80
