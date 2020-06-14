@@ -228,10 +228,11 @@ workflows:
 
       - approval:
           type: approval
-            requires:
-              - deploy-test
+          requires:
+            - e2e
       - package:
           requires:
+            - approval
             - e2e
             - integration
       #- deploy-test:
